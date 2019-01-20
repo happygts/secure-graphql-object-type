@@ -1,6 +1,6 @@
 {
   "name": "secure-graphql-object-type",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple way to secure graphql fields.",
   "main": "./lib/index.js",
   "scripts": {

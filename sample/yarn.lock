@@ -990,9 +990,9 @@ safe-buffer@5.1.2, safe-buffer@~5.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-secure-graphql-object-type@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/secure-graphql-object-type/-/secure-graphql-object-type-1.0.1.tgz#c460b210027436fca182eabd03a8fee7a17818ba"
+secure-graphql-object-type@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/secure-graphql-object-type/-/secure-graphql-object-type-1.1.0.tgz#aecab2657f67ffe538e3723cc6f58254ef35e8f2"
 
 semver@^5.3.0:
   version "5.6.0"

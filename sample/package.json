@@ -7,7 +7,7 @@
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
-    "secure-graphql-object-type": "^1.0.1"
+    "secure-graphql-object-type": "^1.1.0"
   },
   "devDependencies": {
     "babel-plugin-module-alias": "^1.6.0",

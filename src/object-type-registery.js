@@ -34,6 +34,8 @@ class ObjectTypeRegistery {
         if (objectTypeFields[objectTypeFieldKey] && objectTypeFields[objectTypeFieldKey] && !objectTypeFields[objectTypeFieldKey].secure) {
           newFields[keyField] = fields[keyField]
         }
+      } else {
+        newFields[keyField] = fields[keyField];
       }
     })
 

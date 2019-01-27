@@ -16,6 +16,10 @@ class SecureGraphQlObjectType extends GraphQLObjectType {
       throw new Error(`Cannot run since ${config.name} fields are not created with a function.`)
     }
 
+    if (!fieldsToAvoid.includes('$hasAccess')) {
+      throw new Error(`Cannot run since ${config.name} fieldsToAvoid doesn't contain $hasAccess.`)
+    }
+
     objectTypeRegisteryInstance.register(this, fieldsToAvoid)
   }
 

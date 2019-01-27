@@ -34,8 +34,7 @@ class ObjectTypeRegistery {
       return fields
     }
 
-    if (typeof objectType.getFields !== 'function') {
-      // Extra security should be useless.
+    if (!objectType || typeof objectType.getFields !== 'function') {
       return fields
     }
 

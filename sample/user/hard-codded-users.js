@@ -2,14 +2,16 @@ export default [{
   _id: '0',
   profile: {
     firstname: 'obi',
-    lastname: 'one'
+    lastname: 'McGregor',
+    age: 47
   },
-  email: 'obi@gmail.com'
+  email: 'McGregor@gmail.com'
 }, {
   _id: '1',
   profile: {
     firstname: 'obi',
-    lastname: 'there is only one'
+    lastname: 'Guinness',
+    age: 86
   },
-  email: 'unknown@gmail.com'
+  email: 'Guinness@gmail.com'
 }]

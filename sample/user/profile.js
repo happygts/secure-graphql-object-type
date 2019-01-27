@@ -1,11 +1,13 @@
 import {
   GraphQLString,
-  GraphQLObjectType
+  GraphQLInt
 } from 'graphql'
 
 import {
   SecureGraphQlObjectType
 } from 'secure-graphql-object-type'
+
+console.log('GraphQlInt :', GraphQLInt, 'GraphQLString :', GraphQLString)
 
 const UserProfileType = new SecureGraphQlObjectType({
   name: 'UserProfile',
@@ -16,7 +18,10 @@ const UserProfileType = new SecureGraphQlObjectType({
         type: GraphQLString
       },
       lastname: {
-        type: GraphQLString,
+        type: GraphQLString
+      },
+      age: {
+        type: GraphQLInt,
         secure: true
       }
     }

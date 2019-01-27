@@ -16,7 +16,7 @@ export default ({type, resolve, secure, secureCheck, ...otherProps}, fieldKey) =
       return result
     }
 
-    if (!ObjectTypeRegistery._objectTypes.includes(type)) {
+    if (!ObjectTypeRegistery.isRegisteredObjectType(type)) {
       return result
     }
 

@@ -9,6 +9,7 @@ import {
 
 const UserProfileType = new SecureGraphQlObjectType({
   name: 'UserProfile',
+  fieldsToAvoid: ['$hasAccess', '$parent'],
   fields () {
     return {
       firstname: {

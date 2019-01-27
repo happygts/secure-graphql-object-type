@@ -1,11 +1,32 @@
 class ObjectTypeRegistery {
+  /**
+   * _objectTypesContainer = [{
+   *    objectType,
+   *    fieldsToAvoid
+   * }]
+   */
   constructor () {
-    this._objectTypes = []
-    this._fieldToAvoid = ['$hasAccess', '$parent']
+    this._objectTypesContainer = {}
   }
 
-  register (objectType) {
-    this._objectTypes.push(objectType)
+  register (objectType, fieldsToAvoid) {
+    if (!objectType) {
+      throw new Error(`Trying to register an undefined objectType.`)
+    }
+
+    if (!objectType.name) {
+      throw new Error(`Trying to register the objectType: ${objectType} with an undefined name.`)
+    }
+
+    if (this._objectTypesContainer[objectType.name]) {
+      throw new Error(`Trying to register an existing objectType: ${objectType.name}`)
+    }
+
+    this._objectTypesContainer[objectType.name] = {objectType, fieldsToAvoid}
+  }
+
+  isRegisteredObjectType (type) {
+    return !!this._objectTypesContainer[type.name]
   }
 
   getAuthorizedFields (fields, objectType, hasAccess) {
@@ -19,6 +40,7 @@ class ObjectTypeRegistery {
     }
 
     const objectTypeFields = objectType.getFields()
+    const fieldsToAvoid = this._getFieldsToAvoid(objectType.name)
     const objectTypeFieldsKeys = Object.keys(objectTypeFields)
     const newFields = {}
 
@@ -26,7 +48,7 @@ class ObjectTypeRegistery {
 
     fieldsKeys.forEach(keyField => {
       const objectTypeFieldKey = objectTypeFieldsKeys.find(objectTypeFieldKey => objectTypeFields[objectTypeFieldKey].name === keyField)
-      const isFieldToAvoid = this._fieldToAvoid.includes(keyField)
+      const isFieldToAvoid = fieldsToAvoid.includes(keyField)
 
       if (!objectTypeFields[objectTypeFieldKey] && !isFieldToAvoid) {
         console.warn(`Couldn't find key ${keyField} in objectType : ${objectType.name}`)
@@ -40,6 +62,14 @@ class ObjectTypeRegistery {
     })
 
     return newFields
+  }
+  
+  _getFieldsToAvoid (objectTypeName) {
+    if (!objectTypeName || !this._objectTypesContainer[objectTypeName]) {
+      return []
+    }
+
+    return this._objectTypesContainer[objectTypeName].fieldsToAvoid
   }
 }
 

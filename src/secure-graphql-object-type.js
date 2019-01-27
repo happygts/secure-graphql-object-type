@@ -6,7 +6,7 @@ import secureGraphqlField from './secure-graphql-field'
 import objectTypeRegisteryInstance from './object-type-registery'
 
 class SecureGraphQlObjectType extends GraphQLObjectType {
-  constructor ({ fields, ...config }) {
+  constructor ({ fields, fieldsToAvoid = ['$hasAccess', '$parent'], ...config }) {
     super({
       ...config,
       fields
@@ -16,7 +16,7 @@ class SecureGraphQlObjectType extends GraphQLObjectType {
       throw new Error(`Cannot run since ${config.name} fields are not created with a function.`)
     }
 
-    objectTypeRegisteryInstance.register(this)
+    objectTypeRegisteryInstance.register(this, fieldsToAvoid)
   }
 
   getFields () {

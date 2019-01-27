@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./lib || true && mkdir ./lib",
-    "build": "npm run clean && babel ./src --out-dir ./lib"
+    "build": "npm run clean && babel ./src --out-dir ./lib",
+    "buildSample": "npm run clean && babel ./src --out-dir ./sample/node_modules/secure-graphql-object-type/lib"
   },
   "repository": {
     "type": "git",

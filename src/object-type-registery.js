@@ -52,7 +52,7 @@ class ObjectTypeRegistery {
       if (!objectTypeFields[objectTypeFieldKey] && !isFieldToAvoid) {
         console.warn(`Couldn't find key ${keyField} in objectType : ${objectType.name}`)
       } else if (!isFieldToAvoid) {
-        if (objectTypeFields[objectTypeFieldKey] && objectTypeFields[objectTypeFieldKey] && !objectTypeFields[objectTypeFieldKey].secure) {
+        if (objectTypeFields[objectTypeFieldKey] && !objectTypeFields[objectTypeFieldKey].secure) {
           newFields[keyField] = fields[keyField]
         }
       } else {

@@ -36,5 +36,8 @@
     "babel-preset-stage-2": "6.24.1",
     "babel-runtime": "6.6.1",
     "babel-tape-runner": "2.0.0"
+  },
+  "dependencies": {
+    "lodash.isnil": "^4.0.0"
   }
 }

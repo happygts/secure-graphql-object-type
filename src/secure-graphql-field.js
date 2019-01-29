@@ -1,3 +1,5 @@
+import isNil from 'lodash.isnil'
+
 import {
   ObjectTypeRegistery
 } from './index'
@@ -8,7 +10,7 @@ export default ({type, resolve, secure, secureCheck, ...otherProps}, fieldKey) =
 
     const hasAccess = secureCheck ? secureCheck(parent, args, context, info) : false
 
-    if (!result || (secure === true && !(parent.$hasAccess || hasAccess))) {
+    if (isNil(result) || (secure === true && !(parent.$hasAccess || hasAccess))) {
       return null
     }
 

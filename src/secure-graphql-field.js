@@ -4,6 +4,16 @@ import {
   ObjectTypeRegistery
 } from './index'
 
+const _setHasAccessToField = (result, hasAccess) => {
+  if (result instanceof Array) {
+    result.map(r => _setHasAccessToField(r, hasAccess))
+  } else if (typeof result === 'object') {
+    result.$hasAccess = hasAccess
+  }
+
+  return result
+}
+
 export default ({type, resolve, secure, secureCheck, ...otherProps}, fieldKey) => {
   const _resolve = async (parent, args, context, info) => {
     const result = resolve ? await resolve(parent, args, context, info) : parent[fieldKey]
@@ -24,9 +34,7 @@ export default ({type, resolve, secure, secureCheck, ...otherProps}, fieldKey) =
 
     const securedResult = ObjectTypeRegistery.getAuthorizedFields(result, type, hasAccess)
 
-    securedResult.$hasAccess = hasAccess
-
-    return securedResult
+    return _setHasAccessToField(securedResult, hasAccess)
   }
 
   return {

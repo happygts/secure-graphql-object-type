@@ -25,8 +25,18 @@ class ObjectTypeRegistery {
     this._objectTypesContainer[objectType.name] = {objectType, fieldsToAvoid}
   }
 
+  getObjectType (type) {
+    if (type && type.ofType) {
+      return this.getObjectType(type.ofType)
+    }
+
+    return type
+  }
+
   isRegisteredObjectType (type) {
-    return !!this._objectTypesContainer[type.name]
+    const objectType = this.getObjectType(type) || {}
+
+    return !!this._objectTypesContainer[objectType.name]
   }
 
   getAuthorizedFields (fields, objectType, hasAccess) {

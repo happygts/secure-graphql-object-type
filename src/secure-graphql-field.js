@@ -18,9 +18,10 @@ export default ({type, resolve, secure, secureCheck, ...otherProps}, fieldKey) =
   const _resolve = async (parent, args, context, info) => {
     const result = resolve ? await resolve(parent, args, context, info) : parent[fieldKey]
 
-    const hasAccess = secureCheck ? secureCheck(parent, args, context, info) : false
+    // If no secureCheck was found check if the parent had access or not
+    const hasAccess = secureCheck ? secureCheck(parent, args, context, info) : parent.$hasAccess
 
-    if (isNil(result) || (secure === true && !(parent.$hasAccess || hasAccess))) {
+    if (isNil(result) || (secure === true && !hasAccess)) {
       return null
     }
 

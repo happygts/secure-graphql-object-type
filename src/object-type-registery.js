@@ -53,7 +53,7 @@ class ObjectTypeRegistery {
     const objectTypeFieldsKeys = Object.keys(objectTypeFields)
     const newFields = {}
 
-    const fieldsKeys = Object.keys(fields)
+    const fieldsKeys = fields['_doc'] ? Object.keys(fields['_doc']) : Object.keys(fields)
 
     fieldsKeys.forEach(keyField => {
       const objectTypeFieldKey = objectTypeFieldsKeys.find(objectTypeFieldKey => objectTypeFields[objectTypeFieldKey].name === keyField)

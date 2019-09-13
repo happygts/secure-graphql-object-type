@@ -59,14 +59,9 @@ class ObjectTypeRegistery {
       const objectTypeFieldKey = objectTypeFieldsKeys.find(objectTypeFieldKey => objectTypeFields[objectTypeFieldKey].name === keyField)
       const isFieldToAvoid = fieldsToAvoid.includes(keyField)
 
-      if (objectTypeFields[objectTypeFieldKey]) {
-        if (!isFieldToAvoid) {
-          if (!objectTypeFields[objectTypeFieldKey].secure) {
-            newFields[keyField] = fields[keyField]
-          }
-        } else {
-          newFields[keyField] = fields[keyField];
-        }
+      if (isFieldToAvoid ||
+        (objectTypeFields[objectTypeFieldKey] && !objectTypeFields[objectTypeFieldKey].secure)) {
+        newFields[keyField] = fields[keyField];
       }
     })
 
